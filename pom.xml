@@ -7,11 +7,13 @@
     <groupId>in.cypher.jakartaee</groupId>
     <artifactId>JakartaEEApi</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     </properties>
     <build>
         <plugins>
@@ -36,17 +38,22 @@
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.3</version>
+                <version>3.3.1</version>
                 <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+<!--                    <attachClasses>true</attachClasses>
+                    <webXml>target/web.xml</webXml>
                     <webResources>
                         <resource>
-                            <directory>additional_resources</directory>
+                            <directory>src/main/webapp</directory>
+                            <filtering>true</filtering>
                         </resource>
-                    </webResources>
+                    </webResources>-->
                 </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 
@@ -59,12 +66,12 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-api -->
-<!--        <dependency>
+        <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
             <version>10.0.0</version>
             <scope>provided</scope>
-        </dependency>-->
+        </dependency>
 
 <!--        <dependency>
             <groupId>org.projectlombok</groupId>
@@ -82,7 +89,7 @@
         <dependency>
             <groupId>fish.payara.maven.plugins</groupId>
             <artifactId>payara-micro-maven-plugin</artifactId>
-            <version>1.1.0</version>
+            <version>2.0</version>
         </dependency>
 
 
